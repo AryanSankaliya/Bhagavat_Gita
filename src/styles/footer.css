@@ -1,0 +1,20 @@
+.footer {
+  background: var(--color-footer);
+  padding: 30px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer-links {
+  margin-bottom: 15px;
+}
+
+.footer-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.orange {
+  color: var(--color-primary);
+}
