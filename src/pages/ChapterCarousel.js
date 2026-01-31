@@ -1,23 +1,24 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Getpartchap from "./Getpartchap";
-import Getverseofchap from "./Getverseofchap";
+import usePartialChapter from "../hooks/usePartialChapter";
+import useVerses from "../hooks/useVerses";
 
 function ChapterCarousel() {
   const { chap } = useParams();
 
-  const chapterResult = Getpartchap(chap);
-  const { data: verses, loading: versesLoading } = Getverseofchap(chap);
+  const { data: chapterData, loading: chapterLoading, error: chapterError } = usePartialChapter(chap);
+  const { data: verses, loading: versesLoading, error: versesError } = useVerses(chap);
 
-  if (chapterResult.loading || versesLoading) return <p className="text-center">Loading...</p>;
+  if (chapterLoading || versesLoading) return <p className="text-center">Loading...</p>;
+  if (chapterError || versesError) return <p className="text-center text-danger">Error: {chapterError || versesError}</p>;
 
   return (
     <div className="container my-5">
-      <h2 className="text-center text-warning">Chapter {chapterResult.data.chapter_number}</h2>
-      <h1 className="text-center fw-bold">{chapterResult.data.name_translated}</h1>
-      <h5 className="text-center text-muted">({chapterResult.data.name})</h5>
-      <p className="text-center mt-3">{chapterResult.data.chapter_summary}</p>
-      <p className="text-center"><b>Verses:</b> {chapterResult.data.verses_count}</p>
+      <h2 className="text-center text-warning">Chapter {chapterData.chapter_number}</h2>
+      <h1 className="text-center fw-bold">{chapterData.name_translated}</h1>
+      <h5 className="text-center text-muted">({chapterData.name})</h5>
+      <p className="text-center mt-3">{chapterData.chapter_summary}</p>
+      <p className="text-center"><b>Verses:</b> {chapterData.verses_count}</p>
 
       <hr />
 

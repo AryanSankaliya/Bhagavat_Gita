@@ -1,0 +1,49 @@
+:root {
+  /* Color Palette */
+  --color-primary: #FF9933; /* Saffron */
+  --color-primary-dark: #cc7000;
+  --color-secondary: #D4AF37; /* Gold */
+  --color-bg: #FFF8E1; /* Cream */
+  --color-bg-paper: #ffffff;
+  --color-text: #3E2723; /* Dark Brown */
+  --color-text-light: #6D4C41;
+  --color-accent: #C62828; /* Deep Red for highlights */
+
+  /* Typography */
+  --font-heading: 'Cinzel', serif; /* Spiritual/Classic feel */
+  --font-body: 'Lato', sans-serif;
+
+  /* Spacing */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+
+  /* Border Radius */
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}

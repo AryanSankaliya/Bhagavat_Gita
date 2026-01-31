@@ -1,17 +1,19 @@
 import React from "react";
-import "../styles/home.css"; 
+import "../styles/home.css";
 import { useNavigate } from "react-router-dom";
-import Getallchap from "./Getallchap";
+import useChapters from "../hooks/useChapters";
+import SEO from "../components/SEO";
 
 function Home() {
   const navigate = useNavigate();
-  const { data, loading, error } = Getallchap();
+  const { data, loading, error } = useChapters();
 
   if (loading) return <div className="text-center my-5">Loading chapters...</div>;
   if (error) return <div className="text-center my-5 text-danger">{error}</div>;
 
   return (
     <>
+      <SEO title="Home" description="Read the Bhagavad Gita online. Explore all chapters and verses." />
       {/* Hero Section */}
       <div className="hero-wrapper">
         {/* Hero Image */}

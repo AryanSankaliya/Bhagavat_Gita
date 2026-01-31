@@ -1,7 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
-import "../styles/Navbar.css";
-import "../styles/footer.css";
+import "../../styles/Navbar.css";
+import "../../styles/footer.css";
 
 export default function Layout() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -16,14 +16,17 @@ export default function Layout() {
             <Link to="/">Bhagavad Gita</Link>
           </div>
 
+          {/* MOBILE TOGGLE */}
+          <div className="menu-toggle" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+            <i className={`fa-solid ${isDropdownOpen ? "fa-times" : "fa-bars"}`}></i>
+          </div>
+
           {/* CENTER NAVIGATION */}
-          <nav className="center-nav">
+          <nav className={`center-nav ${isDropdownOpen ? "open" : ""}`}>
             <ul className="nav-links">
 
-              <li
-                className={`dropdown ${isDropdownOpen ? "active" : ""}`}
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              >
+              <li className="dropdown" onClick={() => {/* Add separate state for dropdown vs menu if needed */ }}>
+                {/* Simplified for demo: Chapters dropdown always available or toggled via nested state which is cleaner */}
                 <button type="button" className="dropdown-toggle">
                   Chapters <i className="fa-solid fa-angle-down"></i>
                 </button>
@@ -31,7 +34,7 @@ export default function Layout() {
                 <div className="dropdown-menu">
                   <div className="dropdown-grid">
                     {Array.from({ length: 18 }, (_, i) => (
-                      <Link key={i} to={`/chapters/${i + 1}`}>
+                      <Link key={i} to={`/chapters/${i + 1}`} onClick={() => setIsDropdownOpen(false)}>
                         <i className="fa-solid fa-book"></i> Chapter {i + 1}
                       </Link>
                     ))}
@@ -39,9 +42,9 @@ export default function Layout() {
                 </div>
               </li>
 
-              <li><Link to="/quotes">Quotes</Link></li>
-              <li><Link to="/about">About Gita</Link></li>
-              <li><Link to="/donate">Donate</Link></li>
+              <li><Link to="/quotes" onClick={() => setIsDropdownOpen(false)}>Quotes</Link></li>
+              <li><Link to="/about" onClick={() => setIsDropdownOpen(false)}>About Gita</Link></li>
+              <li><Link to="/donate" onClick={() => setIsDropdownOpen(false)}>Donate</Link></li>
 
             </ul>
           </nav>

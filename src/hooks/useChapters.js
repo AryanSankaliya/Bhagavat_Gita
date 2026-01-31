@@ -1,34 +1,39 @@
 import { useEffect, useState } from "react";
 
-function Getallchap() {
+function useChapters() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-     fetch(
-      `https://bhagavad-gita3.p.rapidapi.com/v2/chapters/?skip=0&limit=18`,
+    fetch(
+      `https://${process.env.REACT_APP_RAPIDAPI_HOST}/v2/chapters/?skip=0&limit=18`,
       {
         method: "GET",
         headers: {
-          "X-RapidAPI-Key":
-            "14e1270f77msh32112596f047c9bp148610jsncb722eb99974", 
-          "X-RapidAPI-Host": "bhagavad-gita3.p.rapidapi.com",
+          "X-RapidAPI-Key": process.env.REACT_APP_RAPIDAPI_KEY,
+          "X-RapidAPI-Host": process.env.REACT_APP_RAPIDAPI_HOST,
         },
       }
     )
-      .then((res) => res.json()) // convert response to JSON
       .then((res) => {
-        console.log(res);
+        if (!res.ok) {
+           throw new Error(`API Error: ${res.statusText}`);
+        }
+        return res.json();
+      })
+      .then((res) => {
         setData(res);
         setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+        setError(error.message);
+        setLoading(false);
       });
   }, []);
 
   return { data, loading, error };
 }
 
-export default Getallchap;
+export default useChapters;

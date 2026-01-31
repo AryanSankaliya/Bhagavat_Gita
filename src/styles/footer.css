@@ -1,8 +1,40 @@
 .footer {
-  background: var(--color-footer);
-  padding: 30px;
+  background: var(--color-bg-paper);
+  padding: 3rem 1rem;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 3rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.footer-links {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--color-text-light);
+  font-family: var(--font-body);
+  transition: color 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+  color: var(--color-primary);
+}
+
+.footer p {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+}
+
+.orange {
+  color: var(--color-primary);
+  font-weight: 600;
 }
 
 .footer-links {
