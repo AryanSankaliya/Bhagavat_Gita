@@ -92,24 +92,20 @@
   position: absolute;
   top: 100%;
   left: 50%;
-  transform: translateX(-50%) translateY(10px);
+  transform: translateX(-50%);
   background: var(--color-bg-paper);
   padding: 1.5rem;
   border-radius: var(--radius-md);
   width: max-content;
   max-width: 90vw;
-  opacity: 0;
-  visibility: hidden;
+  display: none;
   box-shadow: var(--shadow-lg);
   z-index: 2000;
-  transition: all 0.3s ease;
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .dropdown.active .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
+  display: block;
 }
 
 .dropdown-grid {

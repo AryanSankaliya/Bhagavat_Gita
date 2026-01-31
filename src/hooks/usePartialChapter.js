@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 
-import { useState, useEffect } from "react";
-
 function usePartialChapter(chap) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);

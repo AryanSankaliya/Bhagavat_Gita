@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 
-import { useState, useEffect } from "react";
-
 function useVerses(chap) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);

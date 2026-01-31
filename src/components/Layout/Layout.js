@@ -5,6 +5,7 @@ import "../../styles/footer.css";
 
 export default function Layout() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isChaptersOpen, setIsChaptersOpen] = useState(false);
 
   return (
     <>
@@ -25,16 +26,19 @@ export default function Layout() {
           <nav className={`center-nav ${isDropdownOpen ? "open" : ""}`}>
             <ul className="nav-links">
 
-              <li className="dropdown" onClick={() => {/* Add separate state for dropdown vs menu if needed */ }}>
-                {/* Simplified for demo: Chapters dropdown always available or toggled via nested state which is cleaner */}
-                <button type="button" className="dropdown-toggle">
+              <li className={`dropdown ${isChaptersOpen ? "active" : ""}`}>
+                <button
+                  type="button"
+                  className="dropdown-toggle"
+                  onClick={(e) => { e.stopPropagation(); setIsChaptersOpen(!isChaptersOpen); }}
+                >
                   Chapters <i className="fa-solid fa-angle-down"></i>
                 </button>
 
                 <div className="dropdown-menu">
                   <div className="dropdown-grid">
                     {Array.from({ length: 18 }, (_, i) => (
-                      <Link key={i} to={`/chapters/${i + 1}`} onClick={() => setIsDropdownOpen(false)}>
+                      <Link key={i} to={`/chapters/${i + 1}`} onClick={() => { setIsDropdownOpen(false); setIsChaptersOpen(false); }}>
                         <i className="fa-solid fa-book"></i> Chapter {i + 1}
                       </Link>
                     ))}
@@ -70,14 +74,14 @@ export default function Layout() {
       <footer className="footer">
         <div className="footer-links">
           <Link to="/about">About Us</Link>
-          <a href="#">App</a>
+          <Link to="/">App</Link>
           <Link to="/gita-ai">Bhagavad Gita AI</Link>
-          <a href="#">Acknowledgements</a>
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-          <a href="#">Blog</a>
+          <Link to="/">Acknowledgements</Link>
+          <Link to="/">Privacy</Link>
+          <Link to="/">Terms</Link>
+          <Link to="/">Blog</Link>
           <Link to="/donate">Donate</Link>
-          <a href="#">API</a>
+          <Link to="/">API</Link>
           <Link to="/contact">Contact Us</Link>
         </div>
         <p>
