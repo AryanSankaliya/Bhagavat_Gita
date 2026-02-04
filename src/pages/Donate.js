@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "../styles/donate.css"; // apni css file import kar le
 
 function Donate() {
   return (
     <>
       <section className="hero-wrapper">
-        <img 
-          src="/hero_img.webp" 
-          alt="Bhagavad Gita Hero" 
+        <img
+          src="/hero_img.webp"
+          alt="Bhagavad Gita Hero"
           className="hero-img"
         />
         <div className="hero">
@@ -19,7 +20,7 @@ function Donate() {
       </section>
 
       {/* Support / Donation Section */}
-     <div className="container text text-center fs-4 col-8">
+      <div className="container text text-center fs-4 col-8">
         <div className="row">
           <div className="col fw-bold fs-2 te mb-2">
             Support the Digital Revival of Ancient Wisdom
@@ -32,8 +33,8 @@ function Donate() {
               suite of spiritual resources entirely free of charge and devoid of
               distractions. By donating, you help us maintain and expand our
               offerings, such as the ad-free{" "}
-              <a href="">Bhagavad Gita website</a>, <a href="">mobile apps</a>{" "}
-              and <a href="">GitaGPT AI chatbot</a>, ensuring that the essence
+              <Link to="/">Bhagavad Gita website</Link>, <Link to="/">mobile apps</Link>{" "}
+              and <Link to="/">GitaGPT AI chatbot</Link>, ensuring that the essence
               of Sanatana Dharma reaches the hands and hearts of seekers around
               the world without any barriers.
             </p>

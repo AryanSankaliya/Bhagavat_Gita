@@ -24,8 +24,8 @@ function ChapterCarousel() {
 
       {verses.map((verse) => (
         <div className="row my-4" key={verse.id}>
-          <div className="col-2 text-warning fw-bold">Verse {verse.verse_number}</div>
-          <div className="col">{verse.translations[4]?.description}</div>
+          <div className="col-12 col-md-2 text-warning fw-bold mb-2 mb-md-0">Verse {verse.verse_number}</div>
+          <div className="col-12 col-md-10">{verse.translations[4]?.description}</div>
         </div>
       ))}
     </div>
